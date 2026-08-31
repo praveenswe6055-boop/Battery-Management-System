@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PortalSidebar from "../components/PortalSidebar";
+import { apiUrl } from "../config/api";
 import "./CheckoutPage.css";
 
 function CheckoutPage() {
@@ -67,7 +68,7 @@ function CheckoutPage() {
       setIsSubmitting(true);
 
       const response = await fetch(
-        "http://localhost:3000/api/orders",
+        apiUrl("/api/orders"),
         {
           method: "POST",
           credentials: "include",

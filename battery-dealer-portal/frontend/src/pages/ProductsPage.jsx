@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import PortalSidebar from "../components/PortalSidebar";
+import { apiUrl } from "../config/api";
 import "./ProductsPage.css";
 
 function ProductsPage() {
@@ -12,7 +13,7 @@ function ProductsPage() {
     async function loadProducts() {
       try {
         const response = await fetch(
-          "http://localhost:3000/api/products",
+          apiUrl("/api/products"),
           {
             credentials: "include",
           },

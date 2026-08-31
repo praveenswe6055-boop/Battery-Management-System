@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PortalSidebar from "../components/PortalSidebar";
 import BrandLogo from "../components/BrandLogo";
+import { apiUrl } from "../config/api";
 import "./DashboardPage.css";
 
 const defaultDashboard = {
@@ -52,7 +53,7 @@ function DashboardPage() {
     async function loadDashboard() {
       try {
         const response = await fetch(
-          "http://localhost:3000/api/dashboard",
+          apiUrl("/api/dashboard"),
           { credentials: "include" },
         );
         const result = await response.json();

@@ -16,6 +16,7 @@ import CustomerPaymentsPage from "./pages/CustomerPaymentsPage";
 import ServiceRequestsPage from "./pages/ServiceRequestsPage";
 import DealerProfilePage from "./pages/DealerProfilePage";
 import BrandLogo from "./components/BrandLogo";
+import { apiUrl } from "./config/api";
 import "./App.css";
 import "./theme.css";
 
@@ -45,7 +46,7 @@ function LoginPage() {
 
   try {
     const response = await fetch(
-      "http://localhost:3000/api/auth/login",
+      apiUrl("/api/auth/login"),
       {
         method: "POST",
         headers: {
@@ -182,7 +183,7 @@ function ProtectedRoute({ children }) {
     async function checkSession() {
       try {
         const response = await fetch(
-          "http://localhost:3000/api/auth/me",
+          apiUrl("/api/auth/me"),
           {
             credentials: "include",
           },

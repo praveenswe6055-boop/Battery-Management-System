@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import PortalSidebar from "../components/PortalSidebar";
+import { apiUrl } from "../config/api";
 import "./DealerProfilePage.css";
 
 const defaultProfile = {
@@ -31,7 +32,7 @@ function DealerProfilePage() {
     async function loadProfile() {
       try {
         const response = await fetch(
-          "http://localhost:3000/api/profile",
+          apiUrl("/api/profile"),
           { credentials: "include" },
         );
         const result = await response.json();
@@ -78,7 +79,7 @@ function DealerProfilePage() {
 
     try {
       const response = await fetch(
-        "http://localhost:3000/api/profile",
+        apiUrl("/api/profile"),
         {
           method: "PUT",
           credentials: "include",

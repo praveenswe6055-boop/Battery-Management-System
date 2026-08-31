@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PortalSidebar from "../components/PortalSidebar";
+import { apiUrl } from "../config/api";
 import "./PaymentsPage.css";
 
 function loadRazorpayScript() {
@@ -52,7 +53,7 @@ function PaymentsPage() {
       setErrorMessage("");
 
       const response = await fetch(
-        "http://localhost:3000/api/payments",
+        apiUrl("/api/payments"),
         {
           credentials: "include",
         },
@@ -112,7 +113,7 @@ function PaymentsPage() {
       }
 
       const createResponse = await fetch(
-        "http://localhost:3000/api/payments/create-order",
+        apiUrl("/api/payments/create-order"),
         {
           method: "POST",
           credentials: "include",
@@ -152,7 +153,7 @@ function PaymentsPage() {
         handler: async (paymentResult) => {
           try {
             const verifyResponse = await fetch(
-              "http://localhost:3000/api/payments/verify",
+              apiUrl("/api/payments/verify"),
               {
                 method: "POST",
                 credentials: "include",

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import QRCode from "qrcode";
 import PortalSidebar from "../components/PortalSidebar";
+import { apiUrl } from "../config/api";
 import "./CustomerPaymentsPage.css";
 
 const emptyForm = {
@@ -74,7 +75,7 @@ function CustomerPaymentsPage() {
   async function loadPaymentRequests() {
     try {
       const response = await fetch(
-        "http://localhost:3000/api/customer-payments",
+        apiUrl("/api/customer-payments"),
         {
           credentials: "include",
         },
@@ -158,7 +159,7 @@ function CustomerPaymentsPage() {
       setIsSubmitting(true);
 
       const response = await fetch(
-        "http://localhost:3000/api/customer-payments",
+        apiUrl("/api/customer-payments"),
         {
           method: "POST",
           credentials: "include",

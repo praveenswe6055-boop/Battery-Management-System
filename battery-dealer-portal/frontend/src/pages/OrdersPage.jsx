@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PortalSidebar from "../components/PortalSidebar";
+import { apiUrl } from "../config/api";
 import "./OrdersPage.css";
 
 function OrdersPage() {
@@ -14,7 +15,7 @@ function OrdersPage() {
     async function loadOrders() {
       try {
         const response = await fetch(
-          "http://localhost:3000/api/orders",
+          apiUrl("/api/orders"),
           {
             credentials: "include",
           },

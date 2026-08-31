@@ -1,5 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import BrandLogo from "./BrandLogo";
+import { apiUrl } from "../config/api";
 
 function PortalSidebar() {
   const navigate = useNavigate();
@@ -7,7 +8,7 @@ function PortalSidebar() {
  async function handleLogout() {
   try {
     await fetch(
-      "http://localhost:3000/api/auth/logout",
+      apiUrl("/api/auth/logout"),
       {
         method: "POST",
         credentials: "include",

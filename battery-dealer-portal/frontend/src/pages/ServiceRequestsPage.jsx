@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import PortalSidebar from "../components/PortalSidebar";
+import { apiUrl } from "../config/api";
 import "./ServiceRequestsPage.css";
 
 function ServiceRequestsPage() {
@@ -29,7 +30,7 @@ function ServiceRequestsPage() {
       setErrorMessage("");
 
       const response = await fetch(
-        "http://localhost:3000/api/service-requests",
+        apiUrl("/api/service-requests"),
         { credentials: "include" },
       );
       const data = await response.json();
@@ -60,7 +61,7 @@ function ServiceRequestsPage() {
 
     try {
       const response = await fetch(
-        "http://localhost:3000/api/service-requests",
+        apiUrl("/api/service-requests"),
         {
           method: "POST",
           credentials: "include",
