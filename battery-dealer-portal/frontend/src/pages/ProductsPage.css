@@ -1,0 +1,245 @@
+.products-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.products-header h1 {
+  margin: 5px 0 8px;
+  color: #101d33;
+  font-size: 32px;
+}
+
+.products-header p {
+  margin: 0;
+  color: #718096;
+}
+
+.products-header input {
+  width: 320px;
+  height: 48px;
+  padding: 0 16px;
+  border: 1px solid #d5deea;
+  border-radius: 10px;
+  outline: none;
+  background: white;
+}
+
+.products-header input:focus {
+  border-color: #176bdb;
+  box-shadow: 0 0 0 4px rgb(23 107 219 / 10%);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  overflow: hidden;
+  border: 1px solid #e0e7ef;
+  border-radius: 15px;
+  background: white;
+  transition: 0.2s;
+}
+
+.product-card:hover {
+  box-shadow: 0 16px 40px rgb(29 55 90 / 10%);
+  transform: translateY(-3px);
+}
+
+.product-image {
+  position: relative;
+  display: grid;
+  height: 170px;
+  place-items: center;
+  background: linear-gradient(145deg, #e9f2ff, #f5f8fc);
+}
+
+.product-image img {
+  width: 88%;
+  height: 150px;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 14px rgb(26 47 74 / 18%));
+}
+
+.stock-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  padding: 6px 9px;
+  border-radius: 20px;
+  color: #087443;
+  font-size: 11px;
+  font-weight: 800;
+  background: #dcf8e9;
+}
+
+.product-content {
+  padding: 20px;
+}
+
+.product-code {
+  margin: 0 0 8px;
+  color: #176bdb;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.product-content h2 {
+  min-height: 52px;
+  margin: 0 0 16px;
+  color: #17243b;
+  font-size: 18px;
+}
+
+.product-specifications {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.product-specifications span {
+  padding: 6px 9px;
+  border-radius: 7px;
+  color: #526277;
+  font-size: 12px;
+  background: #f0f3f7;
+}
+
+.product-footer {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.product-footer div {
+  display: grid;
+  gap: 4px;
+}
+
+.product-footer small {
+  color: #7b8797;
+}
+
+.product-footer strong {
+  color: #101d33;
+  font-size: 20px;
+}
+
+.product-footer button {
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 8px;
+  color: white;
+  font-weight: 700;
+  background: #176bdb;
+  cursor: pointer;
+}
+
+.product-footer button:hover {
+  background: #1058b9;
+}
+
+.empty-products {
+  padding: 60px;
+  color: #718096;
+  text-align: center;
+}
+
+@media (max-width: 1100px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 750px) {
+  .products-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .products-header input {
+    width: 100%;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* VoltCore catalogue accents */
+.products-header h1,
+.product-content h2,
+.product-footer strong {
+  color: var(--vc-ink);
+}
+
+.products-header input:focus {
+  border-color: var(--vc-green);
+  box-shadow: 0 0 0 4px rgb(8 117 255 / 14%);
+}
+
+.product-card {
+  border-color: var(--vc-border);
+  box-shadow: 0 8px 26px rgb(8 29 50 / 5%);
+}
+
+.product-card:hover {
+  border-color: rgb(8 117 255 / 70%);
+  box-shadow: 0 18px 42px rgb(8 29 50 / 12%);
+}
+
+.product-image {
+  background:
+    radial-gradient(circle at 50% 45%, rgb(8 117 255 / 17%), transparent 42%),
+    linear-gradient(145deg, #eef3f7, #fbfcfd);
+}
+
+.stock-badge,
+.product-code {
+  color: var(--vc-green-dark);
+}
+
+.stock-badge {
+  background: rgb(8 117 255 / 18%);
+}
+
+.product-footer button {
+  color: var(--vc-navy-950);
+  background: var(--vc-lime);
+}
+
+.product-footer button:hover {
+  background: #075dce;
+}
+
+.add-to-cart-button {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-to-cart-button span {
+  display: grid;
+  width: 23px;
+  height: 23px;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--vc-lime);
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1;
+  background: var(--vc-navy-950);
+  transition: transform 160ms ease;
+}
+
+.add-to-cart-button:hover span {
+  transform: rotate(90deg);
+}

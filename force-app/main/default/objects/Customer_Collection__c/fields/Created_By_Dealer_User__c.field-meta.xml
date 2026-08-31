@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Created_By_Dealer_User__c</fullName><deleteConstraint>SetNull</deleteConstraint><label>Created By Dealer User</label>
+    <referenceTo>Contact</referenceTo><relationshipLabel>Customer Collections</relationshipLabel>
+    <relationshipName>Customer_Collections</relationshipName><required>false</required><type>Lookup</type>
+</CustomField>

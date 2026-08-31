@@ -1,0 +1,262 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+  color: var(--vc-ink);
+  background: var(--vc-surface);
+}
+
+.brand-logo {
+  display: inline-flex;
+  width: max-content;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.brand-logo__wordmark {
+  display: flex;
+  align-items: center;
+  color: #f8fbff;
+  font-family: "Arial Black", "Trebuchet MS", sans-serif;
+  font-size: 34px;
+  font-style: italic;
+  font-weight: 900;
+  letter-spacing: -3px;
+  text-shadow: 0 3px 14px rgb(0 0 0 / 35%);
+}
+
+.brand-logo__bolt {
+  margin: 0 -5px;
+  color: var(--vc-lime);
+  font-size: 40px;
+  filter: drop-shadow(0 0 9px rgb(8 117 255 / 55%));
+  transform: skew(-8deg);
+}
+
+.brand-logo__caption {
+  margin-top: 2px;
+  padding-left: 48px;
+  color: var(--vc-lime);
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 7px;
+}
+
+.brand-logo--dark .brand-logo__wordmark {
+  color: var(--vc-navy-950);
+  text-shadow: none;
+}
+
+.brand-logo--compact .brand-logo__wordmark {
+  font-size: 28px;
+}
+
+.brand-logo--compact .brand-logo__bolt {
+  font-size: 33px;
+}
+
+.brand-logo--compact .brand-logo__caption {
+  padding-left: 36px;
+  font-size: 8px;
+  letter-spacing: 5px;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.login-page {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  min-height: 100vh;
+}
+
+.brand-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  color: white;
+  background:
+    radial-gradient(circle at 18% 16%, rgb(8 117 255 / 14%), transparent 30%),
+    linear-gradient(145deg, var(--vc-navy-950), var(--vc-navy-800));
+}
+
+.brand-content {
+  max-width: 540px;
+}
+
+.brand-content h1 {
+  margin: 34px 0 18px;
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 1.05;
+}
+
+.brand-content p {
+  max-width: 500px;
+  color: #c5d5e9;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.brand-content ul {
+  display: grid;
+  gap: 14px;
+  margin: 32px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.brand-content li::before {
+  margin-right: 12px;
+  color: var(--vc-lime);
+  content: "✓";
+}
+
+.form-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 440px;
+}
+
+.mobile-brand-logo {
+  display: none;
+  margin-bottom: 32px;
+}
+
+.eyebrow {
+  margin-bottom: 10px;
+  color: var(--vc-green-dark);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.login-card h2 {
+  margin: 0;
+  color: #0f1e37;
+  font-size: 38px;
+}
+
+.description {
+  margin: 12px 0 34px;
+  color: #68758a;
+  line-height: 1.6;
+}
+
+.login-card > label {
+  display: block;
+  margin: 18px 0 8px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.login-card > input {
+  width: 100%;
+  height: 52px;
+  padding: 0 16px;
+  border: 1px solid #d3dbe7;
+  border-radius: 10px;
+  outline: none;
+  background: white;
+  transition: 0.2s;
+}
+
+.login-card > input:focus {
+  border-color: var(--vc-green);
+  box-shadow: 0 0 0 4px rgb(8 117 255 / 14%);
+}
+
+.form-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0 28px;
+  font-size: 14px;
+}
+
+.remember {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.forgot-button {
+  padding: 0;
+  border: 0;
+  color: var(--vc-green-dark);
+  font-weight: 700;
+  background: transparent;
+  cursor: pointer;
+}
+
+.login-button {
+  width: 100%;
+  height: 54px;
+  border: 0;
+  border-radius: 10px;
+  color: var(--vc-navy-950);
+  font-weight: 800;
+  background: var(--vc-lime);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.login-button:hover {
+  background: #075dce;
+  transform: translateY(-1px);
+}
+
+.support {
+  margin-top: 24px;
+  color: #788497;
+  font-size: 13px;
+  text-align: center;
+}
+
+@media (max-width: 800px) {
+  .login-page {
+    grid-template-columns: 1fr;
+  }
+
+  .brand-panel {
+    display: none;
+  }
+
+  .form-panel {
+    padding: 28px 20px;
+  }
+
+  .mobile-brand-logo {
+    display: block;
+  }
+}
+.auth-check-page {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  color: var(--vc-lime);
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  background:
+    radial-gradient(
+      circle at center,
+      rgb(8 117 255 / 12%),
+      transparent 30%
+    ),
+    var(--vc-navy-950);
+}

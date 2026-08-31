@@ -1,0 +1,545 @@
+/* VoltCore cobalt-blue visual system — frontend presentation only. */
+
+body {
+  font-family: "Montserrat", "Aptos Display", "Segoe UI", Arial, sans-serif;
+  color: var(--vc-ink);
+  background:
+    radial-gradient(circle at 90% 0%, rgb(8 117 255 / 7%), transparent 28%),
+    var(--vc-surface);
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  transition: border-color 160ms ease, box-shadow 160ms ease,
+    color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgb(8 117 255 / 28%);
+  outline-offset: 2px;
+}
+
+/* Code-native VoltCore wordmark */
+.brand-logo__wordmark {
+  gap: 3px;
+  color: #f8fbff;
+  font-family: "Arial Black", "Montserrat", "Segoe UI", sans-serif;
+  font-size: 30px;
+  font-style: normal;
+  letter-spacing: -2.4px;
+  text-shadow: 0 5px 22px rgb(0 55 150 / 35%);
+}
+
+.brand-logo__name--accent {
+  color: var(--vc-blue);
+}
+
+.brand-logo__bolt {
+  position: relative;
+  width: 17px;
+  height: 36px;
+  margin: 0 -1px;
+  color: transparent;
+  font-size: 0;
+  filter: drop-shadow(0 0 10px rgb(8 117 255 / 65%));
+  transform: skew(-8deg);
+}
+
+.brand-logo__bolt::before {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #46a5ff 0%, #0875ff 60%, #0058d7 100%);
+  clip-path: polygon(57% 0, 15% 52%, 44% 52%, 29% 100%, 88% 39%, 57% 39%);
+  content: "";
+}
+
+.brand-logo__caption {
+  margin-top: 3px;
+  padding-left: 34px;
+  color: #8dbdff;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 6px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+}
+
+.brand-logo--dark .brand-logo__wordmark {
+  color: var(--vc-navy-950);
+}
+
+.brand-logo--dark .brand-logo__name--accent {
+  color: var(--vc-blue);
+}
+
+.brand-logo--compact .brand-logo__wordmark {
+  font-size: 25px;
+}
+
+.brand-logo--compact .brand-logo__bolt {
+  width: 15px;
+  height: 31px;
+}
+
+.brand-logo--compact .brand-logo__caption {
+  padding-left: 28px;
+  font-size: 5px;
+  letter-spacing: 2px;
+}
+
+/* Login hero */
+.login-page {
+  grid-template-columns: minmax(520px, 1.18fr) minmax(420px, 0.82fr);
+  background: #fff;
+}
+
+.brand-panel {
+  position: relative;
+  justify-content: flex-start;
+  overflow: hidden;
+  padding: clamp(44px, 6vw, 92px);
+  background:
+    linear-gradient(90deg, rgb(2 8 18 / 98%) 0%, rgb(2 8 18 / 91%) 43%, rgb(2 8 18 / 48%) 100%),
+    radial-gradient(circle at 76% 32%, rgb(8 117 255 / 42%), transparent 34%),
+    #020812;
+}
+
+.brand-panel::before {
+  position: absolute;
+  right: -17%;
+  bottom: -7%;
+  width: min(72vw, 840px);
+  height: 76%;
+  opacity: 0.78;
+  background: url("/images/batteries/home-inverter-battery.png") center / contain no-repeat;
+  filter: saturate(1.15) contrast(1.03);
+  content: "";
+  pointer-events: none;
+}
+
+.brand-panel::after {
+  position: absolute;
+  right: -8%;
+  bottom: 9%;
+  width: 58%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--vc-blue), transparent);
+  box-shadow: 0 0 22px 6px rgb(8 117 255 / 35%);
+  content: "";
+}
+
+.brand-content {
+  position: relative;
+  z-index: 1;
+  max-width: 570px;
+}
+
+.brand-kicker {
+  margin: 58px 0 10px !important;
+  color: #72b2ff !important;
+  font-size: 12px !important;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+.brand-content h1 {
+  max-width: 570px;
+  margin: 0 0 22px;
+  font-family: "Arial Black", "Montserrat", "Segoe UI", sans-serif;
+  font-size: clamp(44px, 5.4vw, 76px);
+  line-height: 0.98;
+  letter-spacing: -3px;
+  text-transform: uppercase;
+}
+
+.brand-content h1 span {
+  color: var(--vc-blue);
+}
+
+.brand-content p:not(.brand-kicker) {
+  max-width: 470px;
+  color: #c7d5e8;
+}
+
+.brand-content ul {
+  max-width: 430px;
+}
+
+.brand-content li::before {
+  color: #4ba4ff;
+}
+
+.form-panel {
+  background:
+    radial-gradient(circle at 100% 0%, rgb(8 117 255 / 9%), transparent 28%),
+    #fff;
+}
+
+.login-card {
+  max-width: 460px;
+  padding: 38px;
+  border: 1px solid #e2eaf4;
+  border-radius: 20px;
+  background: rgb(255 255 255 / 94%);
+  box-shadow: 0 24px 70px rgb(4 26 58 / 12%);
+}
+
+.eyebrow,
+.dashboard-eyebrow,
+.product-code,
+.cart-product-details p {
+  color: var(--vc-blue) !important;
+}
+
+.login-card h2 {
+  color: var(--vc-ink);
+  font-size: 42px;
+  letter-spacing: -1.8px;
+}
+
+.login-card > input:focus,
+.products-header input:focus,
+.checkout-fields input:focus,
+.checkout-fields textarea:focus,
+.service-form-card input:focus,
+.service-form-card select:focus,
+.service-form-card textarea:focus,
+.profile-fields input:focus,
+.profile-fields textarea:focus,
+.customer-payment-fields input:focus,
+.customer-payment-fields select:focus,
+.customer-payment-fields textarea:focus {
+  border-color: var(--vc-blue) !important;
+  box-shadow: 0 0 0 4px rgb(8 117 255 / 12%) !important;
+}
+
+.forgot-button {
+  color: var(--vc-blue);
+}
+
+.login-button,
+.product-footer button,
+.checkout-button,
+.place-order-button,
+.profile-save-button,
+.create-payment-link-button,
+.copy-qr-payment-link,
+.service-form-card button[type="submit"] {
+  border-color: var(--vc-blue) !important;
+  color: #fff !important;
+  background: linear-gradient(135deg, #0875ff, #005bdc) !important;
+  box-shadow: 0 9px 22px rgb(8 117 255 / 22%);
+}
+
+.login-button:hover,
+.product-footer button:hover,
+.checkout-button:hover,
+.place-order-button:hover,
+.profile-save-button:hover,
+.create-payment-link-button:hover,
+.copy-qr-payment-link:hover,
+.service-form-card button[type="submit"]:hover {
+  background: linear-gradient(135deg, #258cff, #075dce) !important;
+  transform: translateY(-2px);
+}
+
+/* Shared portal header */
+.portal-header {
+  border-bottom: 1px solid rgb(79 155 255 / 22%);
+  background:
+    radial-gradient(circle at 12% 0%, rgb(8 117 255 / 16%), transparent 28%),
+    linear-gradient(135deg, #020812, #061321 72%, #071a31);
+  box-shadow: 0 10px 34px rgb(2 8 18 / 18%);
+}
+
+.portal-brand-row {
+  min-height: 84px;
+}
+
+.portal-nav-row {
+  min-height: 60px;
+  border-top-color: rgb(255 255 255 / 8%);
+}
+
+.portal-nav a,
+.portal-nav__disabled {
+  min-height: 60px;
+  border-bottom-width: 2px;
+  color: #c8d4e4;
+  font-size: 13px;
+  letter-spacing: 0.1px;
+}
+
+.portal-nav a:hover,
+.portal-nav a.active {
+  border-bottom-color: var(--vc-blue);
+  color: #fff;
+  background: linear-gradient(180deg, rgb(8 117 255 / 4%), rgb(8 117 255 / 16%));
+}
+
+.portal-account__avatar,
+.dealer-badge > span {
+  color: #fff;
+  background: linear-gradient(145deg, #0875ff, #004cb9);
+  box-shadow: 0 0 0 4px rgb(8 117 255 / 12%);
+}
+
+.logout-button {
+  border-color: rgb(45 145 255 / 55%);
+  color: #83bcff;
+}
+
+.logout-button:hover {
+  color: #fff;
+  background: var(--vc-blue);
+}
+
+/* Dashboard and common cards */
+.dashboard-layout {
+  background:
+    radial-gradient(circle at 86% 3%, rgb(8 117 255 / 7%), transparent 24%),
+    var(--vc-surface);
+}
+
+.dashboard-main {
+  padding-top: 30px;
+}
+
+.welcome-banner {
+  min-height: 260px;
+  place-items: start;
+  justify-content: center;
+  align-content: center;
+  border: 1px solid rgb(75 150 255 / 20%);
+  text-align: left;
+  background:
+    linear-gradient(90deg, rgb(2 8 18 / 97%) 0%, rgb(3 14 30 / 89%) 53%, rgb(3 15 34 / 57%) 100%),
+    url("/images/batteries/home-inverter-battery.png") 94% 50% / 48% auto no-repeat,
+    #020812;
+  box-shadow: 0 18px 42px rgb(3 25 55 / 18%);
+}
+
+.welcome-banner .brand-logo--dark .brand-logo__wordmark {
+  color: #fff;
+}
+
+.welcome-banner p {
+  margin: 25px 0 7px;
+  color: #72b2ff;
+}
+
+.welcome-banner h2 {
+  color: #fff;
+}
+
+.welcome-banner > span {
+  color: #aebdd0;
+}
+
+.welcome-banner::after {
+  width: 118px;
+  background: var(--vc-blue);
+  box-shadow: 0 0 16px rgb(8 117 255 / 45%);
+}
+
+.summary-card,
+.dashboard-section,
+.dealer-badge,
+.product-card,
+.cart-item,
+.order-summary,
+.checkout-form,
+.checkout-summary,
+.order-card,
+.payments-section,
+.pending-payment-card,
+.service-form-card,
+.service-history,
+.dealer-identity-card,
+.profile-form-card,
+.customer-payment-form,
+.latest-payment-link,
+.customer-payment-history,
+.customer-payment-card {
+  border-color: var(--vc-border) !important;
+  background: #fff;
+  box-shadow: 0 12px 34px rgb(5 31 65 / 6%);
+}
+
+.summary-card {
+  position: relative;
+  overflow: hidden;
+  border-top: 0;
+}
+
+.summary-card::before {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(180deg, #2d91ff, #075dce);
+  content: "";
+}
+
+.summary-icon.blue,
+.summary-icon.green,
+.summary-icon.service {
+  color: #075dce;
+  background: var(--vc-blue-soft);
+}
+
+.section-heading button,
+.stock-badge,
+.order-status,
+.paid-label,
+.collection-status,
+.service-status {
+  color: #075dce !important;
+  background: var(--vc-blue-soft) !important;
+}
+
+.dashboard-message {
+  color: #075dce;
+  background: var(--vc-blue-soft);
+}
+
+/* Catalogue */
+.product-grid {
+  gap: 22px;
+}
+
+.product-card {
+  border-radius: 16px;
+}
+
+.product-card:hover {
+  border-color: rgb(8 117 255 / 55%) !important;
+  box-shadow: 0 20px 48px rgb(4 35 78 / 14%);
+  transform: translateY(-5px);
+}
+
+.product-image {
+  height: 190px;
+  background:
+    radial-gradient(circle at 50% 48%, rgb(8 117 255 / 18%), transparent 45%),
+    linear-gradient(145deg, #061322, #020812);
+}
+
+.product-image img {
+  width: 92%;
+  height: 175px;
+  filter: drop-shadow(0 16px 18px rgb(0 30 75 / 38%));
+}
+
+.stock-badge {
+  border: 1px solid rgb(8 117 255 / 20%);
+}
+
+.product-specifications span {
+  color: #48617f;
+  background: #eef4fb;
+}
+
+.add-to-cart-button span {
+  color: var(--vc-blue);
+  background: #fff;
+}
+
+/* Forms and tables */
+.checkout-fields input,
+.checkout-fields textarea,
+.service-form-card input,
+.service-form-card select,
+.service-form-card textarea,
+.profile-fields input,
+.profile-fields textarea,
+.customer-payment-fields input,
+.customer-payment-fields select,
+.customer-payment-fields textarea,
+.products-header input {
+  border-color: #d8e3ef;
+  background: #fbfdff;
+}
+
+.payment-option:has(input:checked) {
+  border-color: var(--vc-blue) !important;
+  background: var(--vc-blue-soft) !important;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--vc-blue);
+}
+
+th {
+  color: #5f7390;
+  letter-spacing: 0.5px;
+}
+
+.order-card-header,
+.order-card-footer,
+.checkout-total {
+  border-color: rgb(8 117 255 / 18%) !important;
+}
+
+.order-card-footer,
+.checkout-total {
+  background: linear-gradient(135deg, #041020, #082447) !important;
+}
+
+.order-card-footer strong,
+.checkout-total strong {
+  color: #69adff !important;
+}
+
+@media (max-width: 1050px) {
+  .login-page {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .brand-panel::before {
+    right: -30%;
+    opacity: 0.55;
+  }
+}
+
+@media (max-width: 800px) {
+  .login-page {
+    grid-template-columns: 1fr;
+  }
+
+  .login-card {
+    padding: 28px;
+  }
+
+  .mobile-brand-logo {
+    display: block;
+  }
+
+  .welcome-banner {
+    min-height: 230px;
+    background:
+      linear-gradient(90deg, rgb(2 8 18 / 97%), rgb(3 14 30 / 82%)),
+      url("/images/batteries/home-inverter-battery.png") 120% 50% / 68% auto no-repeat,
+      #020812;
+  }
+}
+
+@media (max-width: 600px) {
+  .welcome-banner {
+    background: linear-gradient(135deg, #020812, #082447);
+  }
+
+  .welcome-banner h2 {
+    font-size: 30px;
+  }
+
+  .product-image {
+    height: 180px;
+  }
+}

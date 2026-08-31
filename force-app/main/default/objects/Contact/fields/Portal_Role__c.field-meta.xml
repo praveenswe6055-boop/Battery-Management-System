@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Portal_Role__c</fullName>
+    <label>Portal Role</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value><fullName>DEALER_ADMIN</fullName><default>false</default><label>Dealer Admin</label></value>
+            <value><fullName>DEALER_USER</fullName><default>true</default><label>Dealer User</label></value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

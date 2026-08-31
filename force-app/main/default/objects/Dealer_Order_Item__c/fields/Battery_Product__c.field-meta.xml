@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Battery_Product__c</fullName><deleteConstraint>SetNull</deleteConstraint><label>Battery Product</label>
+    <referenceTo>Product2</referenceTo><relationshipLabel>Dealer Order Items</relationshipLabel>
+    <relationshipName>Dealer_Order_Items</relationshipName><required>false</required><type>Lookup</type>
+</CustomField>

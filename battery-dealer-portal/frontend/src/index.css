@@ -1,0 +1,17 @@
+:root {
+  --vc-navy-950: #020812;
+  --vc-navy-900: #06111f;
+  --vc-navy-800: #0a1d35;
+  --vc-lime: #0875ff;
+  --vc-green: #0875ff;
+  --vc-green-dark: #075dce;
+  --vc-blue: #0875ff;
+  --vc-blue-bright: #2d91ff;
+  --vc-blue-soft: #eaf3ff;
+  --vc-ink: #071a38;
+  --vc-muted: #667a96;
+  --vc-surface: #f4f7fb;
+  --vc-border: #dbe4ef;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}

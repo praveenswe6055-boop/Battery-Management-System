@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Dealer_Type__c</fullName>
+    <label>Dealer Type</label>
+    <required>false</required>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value><fullName>Authorized Dealer</fullName><default>true</default><label>Authorized Dealer</label></value>
+            <value><fullName>Distributor</fullName><default>false</default><label>Distributor</label></value>
+            <value><fullName>Service Partner</fullName><default>false</default><label>Service Partner</label></value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
