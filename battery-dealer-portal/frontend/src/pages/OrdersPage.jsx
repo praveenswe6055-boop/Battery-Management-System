@@ -10,35 +10,71 @@ function OrdersPage() {
   const [orders, setOrders] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
+  const [isSyncing, setIsSyncing] = useState(false);
+  const [syncMessage, setSyncMessage] = useState("");
+
+  async function loadOrders() {
+    try {
+      const response = await fetch(
+        apiUrl("/api/orders"),
+        {
+          credentials: "include",
+        },
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          data.message || "Unable to load orders.",
+        );
+      }
+
+      setOrders(data.orders);
+      setErrorMessage("");
+    } catch (error) {
+      setErrorMessage(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   useEffect(() => {
-    async function loadOrders() {
-      try {
-        const response = await fetch(
-          apiUrl("/api/orders"),
-          {
-            credentials: "include",
-          },
-        );
-
-        const data = await response.json();
-
-        if (!response.ok) {
-          throw new Error(
-            data.message || "Unable to load orders.",
-          );
-        }
-
-        setOrders(data.orders);
-      } catch (error) {
-        setErrorMessage(error.message);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
     loadOrders();
   }, []);
+
+  async function handleSalesforceSync() {
+    setIsSyncing(true);
+    setSyncMessage("");
+
+    try {
+      const response = await fetch(
+        apiUrl("/api/salesforce/sync/orders"),
+        {
+          method: "POST",
+          credentials: "include",
+        },
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          data.message || "Unable to sync orders to CRM.",
+        );
+      }
+
+      const syncedCount = data.synced?.orderCount || 0;
+      setSyncMessage(
+        `${syncedCount} order${syncedCount === 1 ? "" : "s"} synced to CRM successfully.`,
+      );
+      await loadOrders();
+    } catch (error) {
+      setSyncMessage(`CRM sync failed: ${error.message}`);
+    } finally {
+      setIsSyncing(false);
+    }
+  }
 
   return (
     <div className="dashboard-layout">
@@ -58,13 +94,37 @@ function OrdersPage() {
             </p>
           </div>
 
-          <button
-            type="button"
-            onClick={() => navigate("/products")}
-          >
-            + New Order
-          </button>
+          <div className="orders-header-actions">
+            <button
+              className="sync-orders-button"
+              type="button"
+              disabled={isSyncing}
+              onClick={handleSalesforceSync}
+            >
+              {isSyncing ? "Syncing..." : "Sync to CRM"}
+            </button>
+
+            <button
+              type="button"
+              onClick={() => navigate("/products")}
+            >
+              + New Order
+            </button>
+          </div>
         </header>
+
+        {syncMessage && (
+          <p
+            className={
+              syncMessage.startsWith("CRM sync failed")
+                ? "orders-sync-message orders-sync-error"
+                : "orders-sync-message orders-sync-success"
+            }
+            role="status"
+          >
+            {syncMessage}
+          </p>
+        )}
 
         {isLoading && (
           <section className="empty-orders">
