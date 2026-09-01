@@ -15,6 +15,18 @@ function toSalesforceDateTime(value) {
   return value ? new Date(value).toISOString() : null;
 }
 
+function toSalesforceText(value) {
+  if (value === null || value === undefined) {
+    return null;
+  }
+
+  if (typeof value === "string") {
+    return value;
+  }
+
+  return JSON.stringify(value);
+}
+
 function getSalesforceDealerType(value) {
   const labels = {
     AUTHORIZED_DEALER: "Authorized Dealer",
@@ -333,7 +345,9 @@ async function syncOrderToSalesforce(orderId) {
       Total_Amount__c: Number(order.total_amount),
       Payment_Method__c: order.payment_method,
       Payment_Status__c: order.payment_status,
-      Shipping_Address__c: order.shipping_address,
+      Shipping_Address__c: toSalesforceText(
+        order.shipping_address,
+      ),
       Portal_Created_At__c: toSalesforceDateTime(
         order.created_at,
       ),
