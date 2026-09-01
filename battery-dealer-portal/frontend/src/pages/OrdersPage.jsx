@@ -10,8 +10,6 @@ function OrdersPage() {
   const [orders, setOrders] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
-  const [isSyncing, setIsSyncing] = useState(false);
-  const [syncMessage, setSyncMessage] = useState("");
 
   async function loadOrders() {
     try {
@@ -43,39 +41,6 @@ function OrdersPage() {
     loadOrders();
   }, []);
 
-  async function handleSalesforceSync() {
-    setIsSyncing(true);
-    setSyncMessage("");
-
-    try {
-      const response = await fetch(
-        apiUrl("/api/salesforce/sync/orders"),
-        {
-          method: "POST",
-          credentials: "include",
-        },
-      );
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(
-          data.message || "Unable to sync orders to CRM.",
-        );
-      }
-
-      const syncedCount = data.synced?.orderCount || 0;
-      setSyncMessage(
-        `${syncedCount} order${syncedCount === 1 ? "" : "s"} synced to CRM successfully.`,
-      );
-      await loadOrders();
-    } catch (error) {
-      setSyncMessage(`CRM sync failed: ${error.message}`);
-    } finally {
-      setIsSyncing(false);
-    }
-  }
-
   return (
     <div className="dashboard-layout">
       <PortalSidebar />
@@ -94,37 +59,13 @@ function OrdersPage() {
             </p>
           </div>
 
-          <div className="orders-header-actions">
-            <button
-              className="sync-orders-button"
-              type="button"
-              disabled={isSyncing}
-              onClick={handleSalesforceSync}
-            >
-              {isSyncing ? "Syncing..." : "Sync to CRM"}
-            </button>
-
-            <button
-              type="button"
-              onClick={() => navigate("/products")}
-            >
-              + New Order
-            </button>
-          </div>
-        </header>
-
-        {syncMessage && (
-          <p
-            className={
-              syncMessage.startsWith("CRM sync failed")
-                ? "orders-sync-message orders-sync-error"
-                : "orders-sync-message orders-sync-success"
-            }
-            role="status"
+          <button
+            type="button"
+            onClick={() => navigate("/products")}
           >
-            {syncMessage}
-          </p>
-        )}
+            + New Order
+          </button>
+        </header>
 
         {isLoading && (
           <section className="empty-orders">
